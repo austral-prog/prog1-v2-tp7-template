@@ -48,3 +48,85 @@ def create_record(registro_azara, registro_rui):
         Tupla combinada si las coordenadas coinciden, o "not a match" si no.
     """
     pass  # Reemplazar con tu implementación
+
+
+def sum_tuple(numeros):
+    """
+    Recorre una tupla de números y retorna la suma total.
+    Si la tupla está vacía, retorna 0.
+
+    No se permite usar la función built-in sum(). Implementar la suma
+    recorriendo la tupla con un for (o while).
+
+    Args:
+        numeros: Tupla de números (enteros o flotantes)
+
+    Returns:
+        La suma de todos los elementos de la tupla
+
+    Ejemplo:
+        sum_tuple((1, 2, 3, 4, 5)) -> 15
+        sum_tuple(()) -> 0
+    """
+    pass  # Reemplazar con tu implementación
+
+
+def count_occurrences(tupla, elemento):
+    """
+    Recorre la tupla y cuenta cuántas veces aparece el elemento.
+
+    No se permite usar el método .count(). Implementar el conteo
+    recorriendo la tupla con un for (o while).
+
+    Args:
+        tupla: Tupla con elementos de cualquier tipo
+        elemento: El elemento a contar
+
+    Returns:
+        La cantidad de veces que aparece el elemento (int)
+
+    Ejemplo:
+        count_occurrences((1, 2, 2, 3, 2), 2) -> 3
+        count_occurrences(('a', 'b', 'a'), 'c') -> 0
+    """
+    pass  # Reemplazar con tu implementación
+
+
+def find_index(tupla, elemento):
+    """
+    Recorre la tupla y retorna el índice de la PRIMERA aparición del
+    elemento. Si el elemento no se encuentra, retorna -1.
+
+    No se permite usar el método .index(). Implementar la búsqueda
+    recorriendo la tupla con un for (o while).
+
+    Args:
+        tupla: Tupla con elementos
+        elemento: El elemento a buscar
+
+    Returns:
+        El índice (int) de la primera aparición, o -1 si no está
+
+    Ejemplo:
+        find_index(('a', 'b', 'c', 'b'), 'b') -> 1
+        find_index((1, 2, 3), 9) -> -1
+    """
+    pass  # Reemplazar con tu implementación
+
+
+def filter_positives(numeros):
+    """
+    Recorre una tupla de números y retorna una nueva tupla con solo
+    los números positivos (> 0). El cero NO se considera positivo.
+
+    Args:
+        numeros: Tupla de números (enteros o flotantes)
+
+    Returns:
+        Tupla con los números positivos, en el orden original
+
+    Ejemplo:
+        filter_positives((-3, 1, 0, 5, -2, 7)) -> (1, 5, 7)
+        filter_positives((-1, -2, -3)) -> ()
+    """
+    pass  # Reemplazar con tu implementación

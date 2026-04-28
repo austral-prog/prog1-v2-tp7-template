@@ -53,7 +53,7 @@ Uno tiene una lista de tesoros con coordenadas, el otro una lista de ubicaciones
 
 Las coordenadas de Azara y Rui están con formatos distintos. Ayudá a organizarlas.
 
-Los 3 ejercicios de esta parte se resuelven en el mismo archivo: `exercise_tuples.py`.
+Todos los ejercicios de esta parte se resuelven en el mismo archivo: `exercise_tuples.py`.
 
 **Archivo de test:** `test_tp7_tuples.py`
 
@@ -119,17 +119,87 @@ create_record(('Brass Spyglass', '4B'), ('Seaside Cottages', ('1', 'C'), 'Blue')
 
 ---
 
+### Ejercicio 4 — `sum_tuple`
+
+**Conceptos:** iteración con `for` sobre una tupla, acumulador.
+
+**Consigna:** Implementar `sum_tuple(numeros)` que recorra la tupla con un `for` (o `while`) y retorne la suma total. Si la tupla está vacía, retornar 0.
+
+**No se permite usar `sum()`.**
+
+**Ejemplo:**
+
+```python
+sum_tuple((1, 2, 3, 4, 5))  # → 15
+sum_tuple(())               # → 0
+sum_tuple((10, -15, 5, -5)) # → -5
+```
+
+---
+
+### Ejercicio 5 — `count_occurrences`
+
+**Conceptos:** recorrido con `for`, contador, comparación.
+
+**Consigna:** Implementar `count_occurrences(tupla, elemento)` que recorra la tupla y cuente cuántas veces aparece `elemento`.
+
+**No se permite usar el método `.count()`.**
+
+**Ejemplo:**
+
+```python
+count_occurrences((1, 2, 2, 3, 2), 2)            # → 3
+count_occurrences(('a', 'b', 'a'), 'c')          # → 0
+count_occurrences((), 'x')                       # → 0
+```
+
+---
+
+### Ejercicio 6 — `find_index`
+
+**Conceptos:** iteración y retorno temprano.
+
+**Consigna:** Implementar `find_index(tupla, elemento)` que retorne el índice de la **primera** aparición del elemento. Si no se encuentra, retornar `-1`.
+
+**No se permite usar el método `.index()`.**
+
+**Ejemplo:**
+
+```python
+find_index(('a', 'b', 'c', 'b'), 'b')  # → 1
+find_index((1, 2, 3), 9)               # → -1
+find_index((), 'x')                    # → -1
+```
+
+---
+
+### Ejercicio 7 — `filter_positives`
+
+**Conceptos:** iteración, construcción de una nueva tupla, filtrado.
+
+**Consigna:** Implementar `filter_positives(numeros)` que recorra la tupla y retorne una **nueva tupla** con solo los números positivos (> 0). El 0 NO es positivo.
+
+**Ejemplo:**
+
+```python
+filter_positives((-3, 1, 0, 5, -2, 7))  # → (1, 5, 7)
+filter_positives((-1, -2, -3))          # → ()
+filter_positives((0, 0, 0))             # → ()
+```
+
+---
+
 ## Parte 2 — Sets (Conjuntos)
 
-Operás una pequeña empresa de catering y el club de cocina local te pide ayuda para organizar un evento.
+Ejercicios sobre sets: aplicaciones reales (catering) y operaciones recorriendo la estructura con `for` / `while`.
 
-Los 2 ejercicios de esta parte se resuelven en el mismo archivo: `exercise_sets.py`.
+Todos los ejercicios de esta parte se resuelven en el mismo archivo: `exercise_sets.py`.
 
 **Archivo de test:** `test_tp7_sets.py`
 
 ---
 
-### Ejercicio 4 — `clean_ingredients`
+### Ejercicio 8 — `clean_ingredients`
 
 **Conceptos:** conversión de lista a `set`, eliminación de duplicados.
 
@@ -147,7 +217,7 @@ clean_ingredients('Punjabi-Style Chole',
 
 ---
 
-### Ejercicio 5 — `check_drinks`
+### Ejercicio 9 — `check_drinks`
 
 **Conceptos:** operador `in` con sets, iteración, retorno temprano.
 
@@ -168,21 +238,73 @@ check_drinks('Shirley Tonic',
 # → 'Shirley Tonic Cocktail'
 ```
 
-**Tip:** verificar pertenencia con `in` sobre un `set` es eficiente (O(1)).
+---
+
+### Ejercicio 10 — `unique_chars`
+
+**Conceptos:** construcción de un set desde un string.
+
+**Consigna:** Implementar `unique_chars(texto)` que reciba un string y devuelva un `set` con los caracteres únicos.
+
+**Ejemplo:**
+
+```python
+unique_chars("hello")
+# → {'h', 'e', 'l', 'o'}
+
+unique_chars("")
+# → set()
+```
+
+---
+
+### Ejercicio 11 — `sum_set`
+
+**Conceptos:** iteración con `for` sobre un set, acumulador.
+
+**Consigna:** Implementar `sum_set(numeros)` que recorra el set y retorne la suma de sus elementos. Si el set está vacío, retornar 0.
+
+**No se permite usar `sum()`.**
+
+**Ejemplo:**
+
+```python
+sum_set({1, 2, 3, 4})   # → 10
+sum_set(set())          # → 0
+sum_set({-5, 5, -3, 3}) # → 0
+```
+
+---
+
+### Ejercicio 12 — `common_elements`
+
+**Conceptos:** iteración sobre set, pertenencia con `in`, construcción de un set nuevo.
+
+**Consigna:** Implementar `common_elements(set_a, set_b)` que retorne un nuevo set con los elementos que aparecen en **ambos** sets.
+
+**No se permite usar `&` ni `.intersection()`.** La idea es recorrer uno de los sets y verificar con `in` si el elemento está también en el otro.
+
+**Ejemplo:**
+
+```python
+common_elements({1, 2, 3}, {2, 3, 4})  # → {2, 3}
+common_elements({1, 2}, {3, 4})        # → set()
+common_elements({1, 2, 3}, {1, 2, 3})  # → {1, 2, 3}
+```
 
 ---
 
 ## Parte 3 — Diccionarios
 
-Administrás un sistema de inventario organizado por el nombre del artículo y la cantidad disponible. Las siguientes funciones te permiten crear, agregar, descontar, eliminar y listar ítems.
+Esta parte tiene dos bloques. El primero trabaja sobre un sistema de inventario (crear, agregar, descontar, eliminar, listar ítems). El segundo introduce operaciones más generales sobre diccionarios: búsqueda del máximo, inversión, frecuencia de palabras y análisis de gastos.
 
-Los 5 ejercicios de esta parte se resuelven en el mismo archivo: `exercise_dicts.py`.
+Todos los ejercicios se resuelven en el mismo archivo: `exercise_dicts.py`.
 
 **Archivo de test:** `test_tp7_dicts.py`
 
 ---
 
-### Ejercicio 6 — `create_inventory`
+### Ejercicio 13 — `create_inventory`
 
 **Conceptos:** creación de diccionarios, conteo de ocurrencias.
 
@@ -197,7 +319,7 @@ create_inventory(["coal", "wood", "wood", "diamond", "diamond", "diamond"])
 
 ---
 
-### Ejercicio 7 — `add_items`
+### Ejercicio 14 — `add_items`
 
 **Conceptos:** acceso y modificación de diccionarios, operador `in`.
 
@@ -212,7 +334,7 @@ add_items({"coal": 1}, ["wood", "iron", "coal", "wood"])
 
 ---
 
-### Ejercicio 8 — `decrement_items`
+### Ejercicio 15 — `decrement_items`
 
 **Conceptos:** modificación de diccionarios, validaciones de rango.
 
@@ -232,7 +354,7 @@ decrement_items({"coal": 2, "wood": 1, "diamond": 2},
 
 ---
 
-### Ejercicio 9 — `remove_item`
+### Ejercicio 16 — `remove_item`
 
 **Conceptos:** eliminación con `del` o `pop`, validación con `in`.
 
@@ -250,7 +372,7 @@ remove_item({"coal": 2, "wood": 1, "diamond": 2}, "gold")
 
 ---
 
-### Ejercicio 10 — `list_inventory`
+### Ejercicio 17 — `list_inventory`
 
 **Conceptos:** método `.items()`, list comprehension, filtrado.
 
@@ -261,4 +383,111 @@ remove_item({"coal": 2, "wood": 1, "diamond": 2}, "gold")
 ```python
 list_inventory({"coal": 7, "wood": 11, "diamond": 2, "iron": 7, "silver": 0})
 # → [('coal', 7), ('wood', 11), ('diamond', 2), ('iron', 7)]
+```
+
+---
+
+### Ejercicio 18 — `find_max_value`
+
+**Conceptos:** iteración con `.items()`, comparación de valores, caso borde para dict vacío.
+
+**Consigna:** Implementar `find_max_value(diccionario)` que reciba un diccionario de nombres (claves) y puntajes (valores), y devuelva el nombre asociado al puntaje más alto. Si el diccionario está vacío, retornar `""`.
+
+**Ejemplo:**
+
+```python
+find_max_value({'John': 85, 'Emma': 92, 'Sophia': 78})
+# → 'Emma'
+
+find_max_value({})
+# → ''
+```
+
+---
+
+### Ejercicio 19 — `reverse_dict`
+
+**Conceptos:** inversión de diccionarios, acumulación de claves duplicadas.
+
+**Consigna:** Implementar `reverse_dict(diccionario)` que invierta el diccionario usando los valores como claves. Si varias claves comparten el mismo valor, sus nombres se concatenan (en orden de aparición) como una sola cadena.
+
+**Ejemplo:**
+
+```python
+reverse_dict({'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 2})
+# → {1: 'a', 2: 'be', 3: 'cd'}
+
+reverse_dict({})
+# → {}
+```
+
+---
+
+### Ejercicio 20 — `word_frequency`
+
+**Conceptos:** conteo de ocurrencias con diccionario, operador `in`.
+
+**Consigna:** Implementar `word_frequency(palabras)` que reciba una lista de palabras y retorne un `dict` con la frecuencia de cada una. Debe soportar también el caso de recibir un string vacío, retornando `{}`.
+
+**Ejemplo:**
+
+```python
+word_frequency(["apple", "banana", "apple", "orange", "banana", "apple"])
+# → {'apple': 3, 'banana': 2, 'orange': 1}
+
+word_frequency("")
+# → {}
+```
+
+---
+
+### Ejercicio 21 — `find_biggest_expense`
+
+**Conceptos:** promedio de listas, iteración sobre `.items()`, comparación.
+
+**Consigna:** Implementar `find_biggest_expense(gastos)` que reciba un diccionario donde cada clave es una categoría y su valor una lista de gastos. Retornar la categoría cuyo **promedio** sea más alto. Si el diccionario está vacío, retornar `""`.
+
+**Ejemplo:**
+
+```python
+find_biggest_expense({'Food': [60, 80, 100],
+                      'Transport': [10, 1, 2],
+                      'Games': [10, 20, 30]})
+# → 'Food'
+```
+
+---
+
+### Ejercicio 22 — `sum_expenses`
+
+**Conceptos:** construcción de diccionarios con `sum`, dict comprehension.
+
+**Consigna:** Implementar `sum_expenses(gastos)` que reciba el mismo formato de entrada que el ejercicio anterior y retorne un nuevo diccionario con la **suma total** de los gastos por categoría.
+
+**Ejemplo:**
+
+```python
+sum_expenses({'Food': [60, 80, 100],
+              'Transport': [10, 1, 2],
+              'Games': [10, 20, 30]})
+# → {'Food': 240, 'Transport': 13, 'Games': 60}
+```
+
+---
+
+### Ejercicio 23 — `sum_expenses_by_type`
+
+**Conceptos:** iteración anidada, agrupamiento por clave, uso de `.get()`.
+
+**Consigna:** Implementar `sum_expenses_by_type(gastos)` que reciba un diccionario donde cada categoría tiene una lista de tuplas `(tipo, monto)`. Retornar un nuevo diccionario con la suma de los montos agrupados por **tipo** (ignorando la categoría).
+
+**Ejemplo:**
+
+```python
+sum_expenses_by_type({
+    'Food': [("A", 60), ("B", 100), ("A", 20)],
+    'Transport': [("A", 10), ("B", 50), ("C", 5)],
+    'Games': [("A", 6), ("B", 24), ("C", 99)]
+})
+# → {'A': 96, 'B': 174, 'C': 104}
 ```

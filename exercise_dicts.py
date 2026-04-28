@@ -76,3 +76,122 @@ def list_inventory(inventario):
         Lista de tuplas (item, cantidad) con cantidad > 0
     """
     pass  # Reemplazar con tu implementación
+
+
+def find_max_value(diccionario):
+    """
+    Recibe un diccionario de nombres y puntajes, y retorna la clave
+    (nombre) con el valor (puntaje) más alto. Si el diccionario está
+    vacío, retorna "".
+
+    Args:
+        diccionario: Diccionario {nombre: puntaje}
+
+    Returns:
+        String con la clave de mayor valor, o "" si el dict está vacío
+
+    Ejemplo:
+        find_max_value({'John': 85, 'Emma': 92, 'Sophia': 78}) -> 'Emma'
+    """
+    pass  # Reemplazar con tu implementación
+
+
+def reverse_dict(diccionario):
+    """
+    Invierte un diccionario: cada valor pasa a ser clave, y cada clave
+    pasa a ser valor. Si varias claves comparten el mismo valor, sus
+    nombres se concatenan (en el orden en que aparecen).
+
+    Args:
+        diccionario: Diccionario original
+
+    Returns:
+        Nuevo diccionario invertido
+
+    Ejemplo:
+        reverse_dict({'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 2})
+        -> {1: 'a', 2: 'be', 3: 'cd'}
+    """
+    pass  # Reemplazar con tu implementación
+
+
+def word_frequency(palabras):
+    """
+    Cuenta cuántas veces aparece cada palabra en la lista y lo retorna
+    como un diccionario {palabra: cantidad}.
+
+    Args:
+        palabras: Lista de palabras (strings). También debe soportar
+                  un string vacío retornando un diccionario vacío.
+
+    Returns:
+        Diccionario con la frecuencia de cada palabra
+
+    Ejemplo:
+        word_frequency(["apple", "banana", "apple", "orange", "banana", "apple"])
+        -> {'apple': 3, 'banana': 2, 'orange': 1}
+    """
+    pass  # Reemplazar con tu implementación
+
+
+def find_biggest_expense(gastos):
+    """
+    Recibe un diccionario donde cada clave es una categoría y el valor
+    una lista de gastos (números). Retorna la categoría con el
+    promedio más alto. Si el diccionario está vacío, retorna "".
+
+    Args:
+        gastos: Diccionario {categoria: [gasto1, gasto2, ...]}
+
+    Returns:
+        String con la categoría de mayor promedio, o "" si vacío
+
+    Ejemplo:
+        find_biggest_expense({'Food': [60, 80, 100],
+                              'Transport': [10, 1, 2],
+                              'Games': [10, 20, 30]}) -> 'Food'
+    """
+    pass  # Reemplazar con tu implementación
+
+
+def sum_expenses(gastos):
+    """
+    Recibe un diccionario de categorías con listas de gastos y retorna
+    un nuevo diccionario con la suma total de los gastos por categoría.
+
+    Args:
+        gastos: Diccionario {categoria: [gasto1, gasto2, ...]}
+
+    Returns:
+        Diccionario {categoria: suma_total}
+
+    Ejemplo:
+        sum_expenses({'Food': [60, 80, 100],
+                      'Transport': [10, 1, 2],
+                      'Games': [10, 20, 30]})
+        -> {'Food': 240, 'Transport': 13, 'Games': 60}
+    """
+    pass  # Reemplazar con tu implementación
+
+
+def sum_expenses_by_type(gastos):
+    """
+    Recibe un diccionario de categorías cuyos valores son listas de
+    tuplas (tipo, monto). Retorna un nuevo diccionario con la suma
+    de montos agrupada por tipo (no por categoría).
+
+    Args:
+        gastos: Diccionario {categoria: [(tipo, monto), ...]}
+
+    Returns:
+        Diccionario {tipo: suma_total_del_tipo}
+
+    Ejemplo:
+        sum_expenses_by_type({
+            'Food': [("A", 60), ("B", 100), ("A", 20)],
+            'Transport': [("A", 10), ("B", 50), ("C", 5)],
+            'Games': [("A", 6), ("B", 24), ("C", 99)]
+        })
+        -> {'A': 96, 'B': 174, 'C': 104}
+    """
+    pass  # Reemplazar con tu implementación

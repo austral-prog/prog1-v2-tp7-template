@@ -98,5 +98,84 @@ class TestCheckDrinks(unittest.TestCase):
         self.assertEqual('Mojito Cocktail', result)
 
 
+class TestUniqueChars(unittest.TestCase):
+
+    def test_hello(self):
+        """Caracteres únicos de 'hello'"""
+        result = ex.unique_chars("hello")
+        self.assertEqual({'h', 'e', 'l', 'o'}, result)
+
+    def test_string_vacio(self):
+        """String vacío retorna set vacío"""
+        result = ex.unique_chars("")
+        self.assertEqual(set(), result)
+
+    def test_todos_distintos(self):
+        """Todos los caracteres son distintos"""
+        result = ex.unique_chars("abcdef")
+        self.assertEqual({'a', 'b', 'c', 'd', 'e', 'f'}, result)
+
+    def test_todos_iguales(self):
+        """Todos los caracteres son iguales"""
+        result = ex.unique_chars("aaaa")
+        self.assertEqual({'a'}, result)
+
+    def test_con_espacios(self):
+        """Incluye espacios como caracteres válidos"""
+        result = ex.unique_chars("ab ba")
+        self.assertEqual({'a', 'b', ' '}, result)
+
+
+class TestSumSet(unittest.TestCase):
+
+    def test_suma_simple(self):
+        """Suma de un set de enteros"""
+        self.assertEqual(10, ex.sum_set({1, 2, 3, 4}))
+
+    def test_set_vacio(self):
+        """Set vacío retorna 0"""
+        self.assertEqual(0, ex.sum_set(set()))
+
+    def test_un_solo_elemento(self):
+        """Set con un solo elemento"""
+        self.assertEqual(42, ex.sum_set({42}))
+
+    def test_set_con_negativos(self):
+        """Set con números negativos"""
+        self.assertEqual(0, ex.sum_set({-5, 5, -3, 3}))
+
+    def test_set_con_flotantes(self):
+        """Set con flotantes"""
+        self.assertAlmostEqual(4.5, ex.sum_set({1.5, 3.0}))
+
+
+class TestCommonElements(unittest.TestCase):
+
+    def test_interseccion_parcial(self):
+        """Intersección con elementos en común"""
+        self.assertEqual({2, 3}, ex.common_elements({1, 2, 3}, {2, 3, 4}))
+
+    def test_sin_elementos_en_comun(self):
+        """Sin elementos en común retorna set vacío"""
+        self.assertEqual(set(), ex.common_elements({1, 2}, {3, 4}))
+
+    def test_ambos_vacios(self):
+        """Ambos sets vacíos"""
+        self.assertEqual(set(), ex.common_elements(set(), set()))
+
+    def test_un_set_vacio(self):
+        """Un set vacío y otro con elementos"""
+        self.assertEqual(set(), ex.common_elements(set(), {1, 2, 3}))
+
+    def test_sets_iguales(self):
+        """Sets idénticos retornan todos los elementos"""
+        self.assertEqual({1, 2, 3}, ex.common_elements({1, 2, 3}, {1, 2, 3}))
+
+    def test_retorna_set(self):
+        """El resultado debe ser un set"""
+        result = ex.common_elements({1, 2}, {2, 3})
+        self.assertIsInstance(result, set)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -106,5 +106,102 @@ class TestCreateRecord(unittest.TestCase):
         self.assertEqual('not a match', result)
 
 
+class TestSumTuple(unittest.TestCase):
+
+    def test_suma_positivos(self):
+        """Suma de enteros positivos"""
+        self.assertEqual(15, ex.sum_tuple((1, 2, 3, 4, 5)))
+
+    def test_tupla_vacia(self):
+        """Tupla vacía retorna 0"""
+        self.assertEqual(0, ex.sum_tuple(()))
+
+    def test_un_solo_elemento(self):
+        """Un solo elemento retorna ese valor"""
+        self.assertEqual(7, ex.sum_tuple((7,)))
+
+    def test_suma_con_negativos(self):
+        """Mezcla de positivos y negativos"""
+        self.assertEqual(-5, ex.sum_tuple((10, -15, 5, -5)))
+
+    def test_suma_con_flotantes(self):
+        """Suma de flotantes"""
+        self.assertAlmostEqual(6.0, ex.sum_tuple((1.5, 2.5, 2.0)))
+
+
+class TestCountOccurrences(unittest.TestCase):
+
+    def test_contar_enteros(self):
+        """Contar un entero repetido"""
+        self.assertEqual(3, ex.count_occurrences((1, 2, 2, 3, 2), 2))
+
+    def test_elemento_no_presente(self):
+        """Elemento inexistente retorna 0"""
+        self.assertEqual(0, ex.count_occurrences(('a', 'b', 'a'), 'c'))
+
+    def test_tupla_vacia(self):
+        """Tupla vacía retorna 0"""
+        self.assertEqual(0, ex.count_occurrences((), 'x'))
+
+    def test_todos_iguales(self):
+        """Todos los elementos son iguales"""
+        self.assertEqual(4, ex.count_occurrences(('x', 'x', 'x', 'x'), 'x'))
+
+    def test_contar_string_en_tupla(self):
+        """Contar strings en una tupla"""
+        self.assertEqual(3, ex.count_occurrences(('rojo', 'azul', 'rojo', 'verde', 'rojo'), 'rojo'))
+
+
+class TestFindIndex(unittest.TestCase):
+
+    def test_primera_aparicion(self):
+        """Retorna el índice de la primera aparición"""
+        self.assertEqual(1, ex.find_index(('a', 'b', 'c', 'b'), 'b'))
+
+    def test_elemento_no_encontrado(self):
+        """Elemento inexistente retorna -1"""
+        self.assertEqual(-1, ex.find_index((1, 2, 3), 9))
+
+    def test_tupla_vacia(self):
+        """Tupla vacía retorna -1"""
+        self.assertEqual(-1, ex.find_index((), 'x'))
+
+    def test_elemento_en_posicion_cero(self):
+        """Elemento en la primera posición"""
+        self.assertEqual(0, ex.find_index(('x', 'y', 'z'), 'x'))
+
+    def test_elemento_en_ultima_posicion(self):
+        """Elemento en la última posición"""
+        self.assertEqual(3, ex.find_index((10, 20, 30, 40), 40))
+
+
+class TestFilterPositives(unittest.TestCase):
+
+    def test_filtro_mixto(self):
+        """Mezcla de positivos, negativos y cero"""
+        self.assertEqual((1, 5, 7), ex.filter_positives((-3, 1, 0, 5, -2, 7)))
+
+    def test_todos_negativos(self):
+        """Todos negativos retorna tupla vacía"""
+        self.assertEqual((), ex.filter_positives((-1, -2, -3)))
+
+    def test_todos_positivos(self):
+        """Todos positivos retorna la tupla completa"""
+        self.assertEqual((1, 2, 3), ex.filter_positives((1, 2, 3)))
+
+    def test_tupla_vacia(self):
+        """Tupla vacía retorna tupla vacía"""
+        self.assertEqual((), ex.filter_positives(()))
+
+    def test_cero_no_es_positivo(self):
+        """El 0 no se considera positivo"""
+        self.assertEqual((), ex.filter_positives((0, 0, 0)))
+
+    def test_retorna_tupla(self):
+        """El resultado debe ser una tupla"""
+        result = ex.filter_positives((1, -1, 2))
+        self.assertIsInstance(result, tuple)
+
+
 if __name__ == '__main__':
     unittest.main()

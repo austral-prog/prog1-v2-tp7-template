@@ -187,5 +187,151 @@ class TestListInventory(unittest.TestCase):
         self.assertTrue(all(isinstance(x, tuple) for x in result))
 
 
+class TestFindMaxValue(unittest.TestCase):
+
+    def test_ejemplo_basico(self):
+        """Estudiante con el puntaje más alto"""
+        result = ex.find_max_value({'John': 85, 'Emma': 92, 'Sophia': 78})
+        self.assertEqual('Emma', result)
+
+    def test_diccionario_vacio(self):
+        """Diccionario vacío retorna string vacío"""
+        result = ex.find_max_value({})
+        self.assertEqual('', result)
+
+    def test_un_solo_elemento(self):
+        """Un solo par clave-valor"""
+        result = ex.find_max_value({'Ana': 100})
+        self.assertEqual('Ana', result)
+
+    def test_valores_negativos(self):
+        """Funciona con valores negativos"""
+        result = ex.find_max_value({'A': -10, 'B': -5, 'C': -20})
+        self.assertEqual('B', result)
+
+
+class TestReverseDict(unittest.TestCase):
+
+    def test_ejemplo_consigna(self):
+        """Ejemplo de la consigna con valores repetidos"""
+        result = ex.reverse_dict({'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 2})
+        self.assertEqual({1: 'a', 2: 'be', 3: 'cd'}, result)
+
+    def test_diccionario_vacio(self):
+        """Diccionario vacío retorna dict vacío"""
+        result = ex.reverse_dict({})
+        self.assertEqual({}, result)
+
+    def test_sin_repetidos(self):
+        """Sin valores repetidos, inversión simple"""
+        result = ex.reverse_dict({'a': 1, 'b': 2, 'c': 3})
+        self.assertEqual({1: 'a', 2: 'b', 3: 'c'}, result)
+
+    def test_todos_mismo_valor(self):
+        """Todas las claves tienen el mismo valor"""
+        result = ex.reverse_dict({'a': 1, 'b': 1, 'c': 1})
+        self.assertEqual({1: 'abc'}, result)
+
+
+class TestWordFrequency(unittest.TestCase):
+
+    def test_ejemplo_consigna(self):
+        """Frecuencia de palabras"""
+        result = ex.word_frequency(["apple", "banana", "apple", "orange", "banana", "apple"])
+        self.assertEqual({'apple': 3, 'banana': 2, 'orange': 1}, result)
+
+    def test_string_vacio(self):
+        """String vacío retorna diccionario vacío"""
+        result = ex.word_frequency("")
+        self.assertEqual({}, result)
+
+    def test_lista_vacia(self):
+        """Lista vacía retorna diccionario vacío"""
+        result = ex.word_frequency([])
+        self.assertEqual({}, result)
+
+    def test_todas_unicas(self):
+        """Todas las palabras únicas"""
+        result = ex.word_frequency(["uno", "dos", "tres"])
+        self.assertEqual({'uno': 1, 'dos': 1, 'tres': 1}, result)
+
+
+class TestFindBiggestExpense(unittest.TestCase):
+
+    def test_ejemplo_consigna(self):
+        """Categoría con el promedio más alto"""
+        result = ex.find_biggest_expense({
+            'Food': [60, 80, 100],
+            'Transport': [10, 1, 2],
+            'Games': [10, 20, 30]
+        })
+        self.assertEqual('Food', result)
+
+    def test_diccionario_vacio(self):
+        """Diccionario vacío retorna string vacío"""
+        result = ex.find_biggest_expense({})
+        self.assertEqual('', result)
+
+    def test_una_sola_categoria(self):
+        """Una sola categoría"""
+        result = ex.find_biggest_expense({'Food': [50, 100]})
+        self.assertEqual('Food', result)
+
+    def test_promedios_iguales_pero_magnitudes_distintas(self):
+        """El promedio manda, no la suma"""
+        result = ex.find_biggest_expense({
+            'A': [10, 10, 10],    # promedio = 10
+            'B': [100]            # promedio = 100
+        })
+        self.assertEqual('B', result)
+
+
+class TestSumExpenses(unittest.TestCase):
+
+    def test_ejemplo_consigna(self):
+        """Suma total por categoría"""
+        result = ex.sum_expenses({
+            'Food': [60, 80, 100],
+            'Transport': [10, 1, 2],
+            'Games': [10, 20, 30]
+        })
+        self.assertEqual({'Food': 240, 'Transport': 13, 'Games': 60}, result)
+
+    def test_diccionario_vacio(self):
+        """Diccionario vacío retorna dict vacío"""
+        result = ex.sum_expenses({})
+        self.assertEqual({}, result)
+
+    def test_categoria_con_lista_vacia(self):
+        """Categoría con lista vacía suma 0"""
+        result = ex.sum_expenses({'Food': [], 'Games': [10, 20]})
+        self.assertEqual({'Food': 0, 'Games': 30}, result)
+
+
+class TestSumExpensesByType(unittest.TestCase):
+
+    def test_ejemplo_consigna(self):
+        """Suma agrupada por tipo a través de categorías"""
+        result = ex.sum_expenses_by_type({
+            'Food': [("A", 60), ("B", 100), ("A", 20)],
+            'Transport': [("A", 10), ("B", 50), ("C", 5)],
+            'Games': [("A", 6), ("B", 24), ("C", 99)]
+        })
+        self.assertEqual({'A': 96, 'B': 174, 'C': 104}, result)
+
+    def test_diccionario_vacio(self):
+        """Diccionario vacío retorna dict vacío"""
+        result = ex.sum_expenses_by_type({})
+        self.assertEqual({}, result)
+
+    def test_un_solo_tipo(self):
+        """Todos los gastos del mismo tipo"""
+        result = ex.sum_expenses_by_type({
+            'Food': [("A", 10), ("A", 20)],
+            'Games': [("A", 5)]
+        })
+        self.assertEqual({'A': 35}, result)
+
+
 if __name__ == '__main__':
     unittest.main()
